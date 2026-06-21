@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2hxhom57jt5v"]
+
+[ext_resource type="Texture2D" uid="uid://c268sxmdxljw5" path="res://Assets/UI/hp-bar-under-2.png" id="1_vcccu"]
+[ext_resource type="Texture2D" uid="uid://dw2iluv0m44fn" path="res://Assets/UI/hp-bar-frame.png" id="2_sfls8"]
+[ext_resource type="Script" uid="uid://cuq1j5r4jjhuw" path="res://Markers/Healtbars/Healthbar.gd" id="2_vx8vu"]
+[ext_resource type="Texture2D" uid="uid://ca60algthxrnt" path="res://Assets/UI/hp-bar-over.png" id="3_5ibkg"]
+
+[node name="Healthbar" type="TextureProgressBar"]
+z_index = 1
+offset_right = 117.0
+offset_bottom = 26.0
+max_value = 200.0
+value = 200.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_vcccu")
+texture_progress = ExtResource("3_5ibkg")
+script = ExtResource("2_vx8vu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -3.0
+offset_right = 123.0
+offset_bottom = 29.0
+texture = ExtResource("2_sfls8")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
